@@ -34,10 +34,35 @@ public class Main {
             // chooses which player is active and asks them for placement
             String playerSymbol = (turn % 2 == 0) ? "X" : "O";
             System.out.println("Player " + (turn % 2) + " (" + playerSymbol + ") turn");
-            System.out.print("Enter row (0, 1 or 2): ");
-            int row = input.nextInt();
-            System.out.print("Enter a column (0, 1 or 2): ");
-            int column = input.nextInt();
+            int row, column;
+
+            while (true) {
+                System.out.print("Enter row (0, 1 or 2): ");
+                if (input.hasNextInt()) {
+                    row = input.nextInt();
+                    if (row >= 0 && row <= 2)
+                        break;
+                } else {
+                    input.next();
+
+                }
+                System.out.println("Invalid input. Please enter 0, 1. or 2.");
+            }
+
+            while (true) {
+                System.out.print("Enter column (0, 1, or 2): ");
+                if (input.hasNextInt()) {
+                    column = input.nextInt();
+                    if (column >= 0 && column <= 2)
+                        break;
+
+                } else {
+                    input.next();
+                }
+                System.out.println("Invalid input, Please enter 0, 1 or 2");
+
+            }
+
             if (row == 0 && column == 0 && p00.equals(" "))
                 p00 = playerSymbol;
             else if (row == 0 && column == 1 && p01.equals(" "))
